@@ -27,9 +27,10 @@ public:
     void deleteNode(T el); // Delete a particular value
     bool isInList(T el);   // Check if value exists
     void display() ;
+	void swapvalue(T&,T&);
     void sort();           // Sort linked list
     void unique();         // Remove duplicates
-
+    
 private:
     Node<T>* head;
     Node<T>* tail;

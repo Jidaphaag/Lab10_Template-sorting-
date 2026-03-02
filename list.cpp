@@ -103,15 +103,11 @@ T List<T>::deleteNode(T el)
         temp->prev->next = temp->next;
     else
         head = temp->next;
-
-    if (temp->next != nullptr)
-        temp->next->prev = temp->prev;
-    else
-        tail = temp->prev;
-    delete temp;
+        
+delete temp;
 }
 template <class T>
-T List<T>::isInList(T el)
+bool List<T>::isInList(T el)
 {
     Node *current = head;
 
@@ -126,7 +122,7 @@ T List<T>::isInList(T el)
     return false;
 }
 template <class T>
-T List<T>::swapvalues(T& variable1, T& variable2)
+T List<T>::swapvalue(T& variable1, T& variable2)
 {
     T temp;
     temp = variable1;
@@ -134,31 +130,32 @@ T List<T>::swapvalues(T& variable1, T& variable2)
     variable2 = temp;
 }
 template <class T>
-T List<T>::sort(T a[], T number_used){
-T index_of_next_smallest;
-for (TIMER_ABSTIME index = 0; index < number_used – 1; index++)
-{
-index_of_next_smallest = index_of_smallest(a, index, number_used);
-swap_values(a[index], a[index_of_next_smallest]);
-}T index_of_next_smallest;
-for (int index = 0; index < number_used – 1; index++)
-{
-index_of_next_smallest = index_of_smallest(a, index, number_used);
-swap_values(a[index], a[index_of_next_smallest]);
+void List<T>::sort() {
+    for (Node<T>* i = head; i; i = i->next) {
+        Node<T>* minNode = i;
+        for (Node<T>* j = i->next; j; j = j->next) {
+            if (j->info < minNode->info) minNode = j;
+        }
+        swap(i->info, minNode->info);
+    }
 }
+
+template <class T>
+void List<T>::unique() {
+    for (Node<T>* i = head; i; i = i->next) {
+        Node<T>* j = i->next;
+        while (j) {
+            if (j->info == i->info) {
+                Node<T>* duplicate = j;
+                j = j->next;
+                deleteNode(duplicate->info);
+            } else {
+                j = j->next;
+            }
+        }
+    }
 }
-T index_of_smallest(const T a[], T start_index, T number_used)
-{
-T min = a[start_index];
-T index_of_min = start_index;
-for (int index = start_index + 1; index < number_used; index++)
-if (a[index] < min)
-{
-min = a[index];
-index_of_min = index;
-}
-return index_of_min;
-}
+
 
 template <class T>
 T List<T>::display()
