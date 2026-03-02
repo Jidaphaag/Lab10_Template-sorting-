@@ -3,22 +3,19 @@
 using namespace std;
 
 int main() {
-    List mylist;
+    List<int> mylist;   
+
     mylist.headPush(10);
     mylist.display();
-    cout << endl;
 
     mylist.headPush(40);
     mylist.display();
-    cout << endl;
 
     mylist.tailPush(15);
     mylist.display();
-    cout << endl;
 
     mylist.tailPush(20);
     mylist.display();
-    cout << endl;
 
     cout << "Head pop: " << mylist.headPop() << endl;
     mylist.display();

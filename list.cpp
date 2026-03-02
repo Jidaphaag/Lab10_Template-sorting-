@@ -20,8 +20,7 @@ T List<T>::headPush(T el)
     if (isEmpty())
     {
         head = tail = new_node;
-    }
-    else
+    } else
     {
         new_node->next = head;
         head->prev = new_node;
@@ -107,7 +106,7 @@ T List<T>::deleteNode(T el)
 delete temp;
 }
 template <class T>
-bool List<T>::isInList(T el)
+T List<T>::isInList(T el)
 {
     Node *current = head;
 
@@ -130,7 +129,7 @@ T List<T>::swapvalue(T& variable1, T& variable2)
     variable2 = temp;
 }
 template <class T>
-void List<T>::sort() {
+T List<T>::sort() {
     for (Node<T>* i = head; i; i = i->next) {
         Node<T>* minNode = i;
         for (Node<T>* j = i->next; j; j = j->next) {
@@ -141,7 +140,7 @@ void List<T>::sort() {
 }
 
 template <class T>
-void List<T>::unique() {
+T List<T>::unique() {
     for (Node<T>* i = head; i; i = i->next) {
         Node<T>* j = i->next;
         while (j) {
